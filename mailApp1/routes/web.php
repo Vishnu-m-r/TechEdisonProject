@@ -1,4 +1,4 @@
-<?php
+	<?php
 
 /*
 |--------------------------------------------------------------------------
@@ -14,7 +14,6 @@
 Route::get('/', function () {
 	return view('home');
 });
-Route::get('/mail', 'Front@sendMail');
 
 Route::get('api/sendtabledata','Front@tableData');
 
@@ -31,3 +30,11 @@ Route::get('/thank',function(){
 Route::post('/sendmail', 'Front@sendSubMail');
 
 Route::post('/csv', 'Front@saveCSV');
+
+Route::get('/test', 'Front@test');
+
+Route::get('/sent',function(){
+	return view('emailSent');
+});
+
+Route::get('/getstatsdata', 'Front@getStatsData');

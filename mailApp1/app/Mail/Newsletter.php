@@ -32,6 +32,6 @@ class Newsletter extends Mailable
      */
     public function build()
     {
-        return $this->view('mail', $this->order)->subject($this->subject);
+        return $this->view('mail', $this->order)->subject($this->order['subject']);
     }
 }

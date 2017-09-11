@@ -26,10 +26,11 @@ $(function () {
 		}
 	});
 
+
 	$.ajax({
-		url: 'https://api.sendgrid.com/api/stats.get.json?api_user=teched&api_key=123abc12&days=1',
-		dataType:'json',
+		url: '/getstatsdata',
 		success:function(data){
+			var obj = JSON.parse(data);
 			var ctx = document.getElementById("myChart");
 			var myChart = new Chart(ctx, {
 				type: 'bar',
@@ -37,7 +38,7 @@ $(function () {
 					labels: ["Number Of Clicks", "Opens", "Bounces", "Unsubscribes", "Complains", "Delivers", 'Drops'],
 					datasets: [{
 						label: '# of Votes',
-						data: [data[1]['clicks'], data[1]['opens'], data[1]['bounces'], data[1]['unsubscribes'], data[1]['blocked'], data[1]['delivered'], data[1]['spam_drop']],
+						data: [obj[1]['clicks'], obj[1]['opens'], obj[1]['bounces'], obj[1]['unsubscribes'], obj[1]['blocked'], obj[1]['delivered'], obj[1]['spam_drop']],
 						backgroundColor: [
 						'rgba(255, 99, 132, 0.2)',
 						'rgba(54, 162, 235, 0.2)',
@@ -71,5 +72,13 @@ $(function () {
 			});
 		}
 	});	
+	function IsJsonString(str) {
+    try {
+        JSON.parse(str);
+    } catch (e) {
+        return false;
+    }
+    return true;
+}
 
 });
