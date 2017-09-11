@@ -1,6 +1,6 @@
 $(function () {
 	$.ajax({
-		url: 'http://localhost:8000/api/sendtabledata',
+		url: '/api/sendtabledata',
 		dataType:'json',
 		success:function(data){
 			for (var i = 0; i < data['details'].length; i++) {
